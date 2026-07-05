@@ -7,7 +7,7 @@ type what Devin should work on, and it opens the new session in your browser.
 
 ## Install
 
-**[Download New Devin Session.shortcut](dist/New%20Devin%20Session.shortcut?raw=true)**
+**[Download New Devin Session.shortcut](https://github.com/dabit3/devin-ios-shortcut/raw/main/dist/New%20Devin%20Session.shortcut)**
 
 1. Open the downloaded file (from Safari's downloads or the Files app on
    iOS; double-click on macOS). The Shortcuts app opens a preview of the
@@ -64,11 +64,11 @@ so the Install link above always serves the latest signed version.
 
 The signed file in `dist/` is importable by anyone. Options:
 
-- **This README's Install link** — works as soon as the repo is on GitHub;
-  the relative `?raw=true` link redirects to the raw file for whatever
-  repo/fork it lives in. (Prefer linking the in-repo file over release
-  assets: GitHub replaces spaces with dots in release asset names, which
-  changes the imported shortcut's name.)
+- **This README's Install link** — an absolute `/raw/` URL that redirects
+  to the raw file download. If you fork this repo, update the URL to your
+  fork. (Prefer linking the in-repo file over release assets: GitHub
+  replaces spaces with dots in release asset names, which changes the
+  imported shortcut's name.)
 - **iCloud link**: import the shortcut into your own Shortcuts app, then
   Share → **Copy iCloud Link**. One tap fewer for users (no file download),
   but you must re-share a new link whenever you update the shortcut.
