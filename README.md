@@ -15,12 +15,23 @@ lets you open the session in your browser, copy its link, or just move on.
    shortcut's actions. Tap **Add Shortcut** at the bottom of that screen
    to add it to your library. The file is signed and notarized by Apple,
    so it imports on any device (iOS 15+ / macOS 12+).
-2. Create a personal API key (`apk_user_...`) at
-   [app.devin.ai/settings/api-keys](https://app.devin.ai/settings/api-keys).
-   No org ID is needed: the shortcut uses the [v1 API](https://docs.devin.ai/api-reference/v1/sessions/create-a-new-devin-session),
-   which identifies you (and your org) from the key itself.
+2. Create a **personal API key** at
+   [app.devin.ai/settings/api-keys](https://app.devin.ai/settings/api-keys)
+   (it will look like `apk_user_...`).
 3. Edit the shortcut and paste the key into the **Text** action, replacing
    `PASTE_YOUR_DEVIN_API_KEY_HERE`.
+
+**Which key type?** Devin has two API generations, and only one kind of
+key works here. This shortcut uses the
+[v1 API](https://docs.devin.ai/api-reference/v1/sessions/create-a-new-devin-session),
+which authenticates with the personal API keys (`apk_user_...`) linked
+above. The key identifies you and your org, so no org ID is needed, and
+sessions appear in your own session list. Keys for the newer
+[v3 API](https://docs.devin.ai/api-reference/overview) (service user keys
+starting with `cog_`, created under Settings > Service users) do **not**
+work with this shortcut, and v3 also requires an org ID in the URL.
+Devin's docs mark v1 keys as legacy: they keep working during the
+deprecation period, and the shortcut can move to v3 if v1 is retired.
 
 Then run it from the Shortcuts app, Siri ("New Devin Session"), the share
 sheet, a widget, or the Action Button. Shortcuts sync via iCloud, so
