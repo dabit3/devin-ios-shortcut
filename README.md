@@ -43,7 +43,9 @@ then opens the `url` from the response. Actions, in order:
 3. **Ask for Input** — "What should Devin work on?" (pre-filled when run from the share sheet)
 4. **Get Contents of URL** — the POST above
 5. **Get Dictionary Value** — extracts `url`
-6. **If / Otherwise** — opens the session URL, or shows the raw API response on error
+6. **If / Otherwise** — on success shows a menu (**Open in browser** /
+   **Copy link** / **Done**, so you're not forced into the browser when
+   signed out); on error shows the raw API response
 
 ## Build
 

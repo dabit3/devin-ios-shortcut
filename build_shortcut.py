@@ -92,6 +92,7 @@ def build_workflow() -> dict:
     response_uuid = new_uuid()
     url_uuid = new_uuid()
     if_group = new_uuid()
+    menu_group = new_uuid()
 
     api_key = action_output(api_key_uuid, "Devin API Key")
     prompt = action_output(prompt_uuid, "Provided Input")
@@ -142,7 +143,8 @@ def build_workflow() -> dict:
             "WFDictionaryKey": "url",
             "WFInput": attachment(response),
         }),
-        # 6. Open it, or surface the raw API response on failure.
+        # 6. On success, offer choices (auto-opening the browser is annoying
+        #    when you're signed out); on failure surface the API response.
         action("conditional", {
             "UUID": new_uuid(),
             "GroupingIdentifier": if_group,
@@ -150,7 +152,42 @@ def build_workflow() -> dict:
             "WFCondition": 100,  # "has any value"
             "WFInput": {"Type": "Variable", "Variable": attachment(session_url)},
         }),
+        action("choosefrommenu", {
+            "UUID": new_uuid(),
+            "GroupingIdentifier": menu_group,
+            "WFControlFlowMode": 0,
+            "WFMenuPrompt": "Devin session created",
+            "WFMenuItems": ["Open in browser", "Copy link", "Done"],
+        }),
+        action("choosefrommenu", {
+            "UUID": new_uuid(),
+            "GroupingIdentifier": menu_group,
+            "WFControlFlowMode": 1,
+            "WFMenuItemTitle": "Open in browser",
+        }),
         action("openurl", {"WFInput": attachment(session_url)}),
+        action("choosefrommenu", {
+            "UUID": new_uuid(),
+            "GroupingIdentifier": menu_group,
+            "WFControlFlowMode": 1,
+            "WFMenuItemTitle": "Copy link",
+        }),
+        action("setclipboard", {"WFInput": attachment(session_url)}),
+        action("notification", {
+            "WFNotificationActionTitle": "Devin",
+            "WFNotificationActionBody": text("Session link copied:\n", session_url),
+        }),
+        action("choosefrommenu", {
+            "UUID": new_uuid(),
+            "GroupingIdentifier": menu_group,
+            "WFControlFlowMode": 1,
+            "WFMenuItemTitle": "Done",
+        }),
+        action("choosefrommenu", {
+            "UUID": new_uuid(),
+            "GroupingIdentifier": menu_group,
+            "WFControlFlowMode": 2,  # End Menu
+        }),
         action("conditional", {
             "UUID": new_uuid(),
             "GroupingIdentifier": if_group,
