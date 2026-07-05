@@ -1,4 +1,4 @@
-# New Devin Session (iOS/macOS Shortcut)
+# New Devin Cloud Agent Session (iOS/macOS Shortcut)
 
 A shortcut for Apple's built-in [Shortcuts app](https://support.apple.com/guide/shortcuts/welcome/ios)
 (preinstalled on iPhone, iPad, and Mac, so there is nothing else to install)
