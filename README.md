@@ -14,7 +14,10 @@ type what Devin should work on, and it opens the new session in your browser.
    shortcut's actions — tap **Add Shortcut** at the bottom of that screen
    to add it to your library. The file is signed and notarized by Apple,
    so it imports on any device (iOS 15+ / macOS 12+).
-2. Create an API key at [app.devin.ai](https://app.devin.ai) → Settings → API Keys.
+2. Create a personal API key (`apk_user_…`) at
+   [app.devin.ai/settings/api-keys](https://app.devin.ai/settings/api-keys).
+   No org ID is needed: the shortcut uses the [v1 API](https://docs.devin.ai/api-reference/v1/sessions/create-a-new-devin-session),
+   which identifies you (and your org) from the key itself.
 3. Edit the shortcut and paste the key into the **Text** action, replacing
    `PASTE_YOUR_DEVIN_API_KEY_HERE`.
 
