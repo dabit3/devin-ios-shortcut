@@ -1,8 +1,9 @@
 # New Devin Session — iOS/macOS Shortcut
 
-An Apple Shortcut that creates a [Devin](https://devin.ai) session from your
-iPhone, iPad, or Mac: run it (or share text to it), type what Devin should
-work on, and it opens the new session in your browser.
+A shortcut for Apple's built-in [Shortcuts app](https://support.apple.com/guide/shortcuts/welcome/ios)
+(preinstalled on iPhone, iPad, and Mac — nothing else to install) that
+creates a [Devin](https://devin.ai) session: run it (or share text to it),
+type what Devin should work on, and it opens the new session in your browser.
 
 ## Install
 
