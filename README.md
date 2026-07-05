@@ -4,9 +4,21 @@ An Apple Shortcut that creates a [Devin](https://devin.ai) session from your
 iPhone, iPad, or Mac: run it (or share text to it), type what Devin should
 work on, and it opens the new session in your browser.
 
-The shortcut is generated as code (`build_shortcut.py` writes the
-`WFWorkflow` plist that Shortcuts.app reads) and signed with Apple's
-`shortcuts` CLI so anyone can import it.
+## Install
+
+**[Download New Devin Session.shortcut](dist/New%20Devin%20Session.shortcut?raw=true)**
+
+1. Open the downloaded file (from Safari's downloads or the Files app on
+   iOS; double-click on macOS) and tap **Add Shortcut**. The file is signed
+   and notarized by Apple, so it imports on any device (iOS 15+ / macOS 12+).
+2. Create an API key at [app.devin.ai](https://app.devin.ai) → Settings → API Keys.
+3. Edit the shortcut and paste the key into the **Text** action, replacing
+   `PASTE_YOUR_DEVIN_API_KEY_HERE`.
+
+Then run it from the Shortcuts app, Siri ("New Devin Session"), the share
+sheet, a widget, or the Action Button. Shortcuts sync via iCloud, so
+installing on one device makes it available on all of them. Your API key
+stays on your device — it is only sent to `api.devin.ai`.
 
 ## How it works
 
@@ -29,6 +41,10 @@ then opens the `url` from the response. Actions, in order:
 
 ## Build
 
+The shortcut is generated as code: `build_shortcut.py` writes the
+`WFWorkflow` plist that Shortcuts.app reads, validates it with `plutil`, and
+signs it with Apple's `shortcuts` CLI.
+
 Requires macOS with Xcode Command Line Tools (`python3`) and Shortcuts.app
 (macOS 12+). Signing with `--mode anyone` notarizes via Apple and needs
 network + an iCloud-signed-in Mac.
@@ -38,27 +54,21 @@ python3 build_shortcut.py              # build + sign -> dist/New Devin Session.
 python3 build_shortcut.py --no-sign    # unsigned plist only -> build/
 ```
 
-## Install & setup
-
-1. Open `dist/New Devin Session.shortcut` (double-click on macOS, or AirDrop /
-   download it on iPhone) and tap **Add Shortcut**.
-2. Create an API key at [app.devin.ai](https://app.devin.ai) → Settings → API Keys.
-3. Edit the shortcut and paste the key into the **Text** action, replacing
-   `PASTE_YOUR_DEVIN_API_KEY_HERE`.
-
-Then run it from the Shortcuts app, Siri ("New Devin Session"), the share
-sheet, a widget, or the Action Button. Your API key stays on your device —
-it is only sent to `api.devin.ai`.
+After changing the shortcut, rebuild and commit the updated `dist/` artifact
+so the Install link above always serves the latest signed version.
 
 ## Publish
 
 The signed file in `dist/` is importable by anyone. Options:
 
-- **GitHub**: commit `dist/New Devin Session.shortcut` (or attach it to a
-  release). Users download it in Safari on iOS and open it to import.
+- **This README's Install link** — works as soon as the repo is on GitHub;
+  the relative `?raw=true` link redirects to the raw file for whatever
+  repo/fork it lives in. (Prefer linking the in-repo file over release
+  assets: GitHub replaces spaces with dots in release asset names, which
+  changes the imported shortcut's name.)
 - **iCloud link**: import the shortcut into your own Shortcuts app, then
-  Share → **Copy iCloud Link**. Post the link anywhere; note you must re-share
-  a new link whenever you update the shortcut.
+  Share → **Copy iCloud Link**. One tap fewer for users (no file download),
+  but you must re-share a new link whenever you update the shortcut.
 - **[RoutineHub](https://routinehub.co)**: community shortcut gallery —
   create a listing that points at your iCloud link and bump it per release.
 
