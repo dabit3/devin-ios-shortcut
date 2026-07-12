@@ -1,5 +1,7 @@
 # New Devin Cloud Agent Session (iOS/macOS Shortcut)
 
+![Devin Cloud Agent Shortcut](header.png)
+
 A shortcut for Apple's built-in [Shortcuts app](https://support.apple.com/guide/shortcuts/welcome/ios)
 (preinstalled on iPhone, iPad, and Mac, so there is nothing else to install)
 that creates a [Devin](https://devin.ai) session: run it (or share text to
